@@ -1,3 +1,4 @@
+# coding=utf-8
 """
 InaSAFE Disaster risk assessment tool developed by AusAid - **Paragraph.**
 
@@ -10,12 +11,15 @@ Contact : ole.moller.nielsen@gmail.com
 """
 
 __author__ = 'marco@opengis.ch'
-__revision__ = '03d01890920b07c702f377c171c42a50bcb8f74f'
+__revision__ = 'f16353426abc9c5fd8f65e2eb0e87e11c4159468'
 __date__ = '27/05/2013'
 __copyright__ = ('Copyright 2012, Australia Indonesia Facility for '
                  'Disaster Reduction')
 
 import os
+from PyQt4.QtCore import QPyNullVariant
+from safe.utilities.i18n import tr
+
 from message_element import MessageElement
 from exceptions import InvalidMessageItemError
 
@@ -59,6 +63,9 @@ class Text(MessageElement):
             self.text.append(PlainText(text))
         elif isinstance(text, Text):
             self.text.append(text)
+        elif isinstance(text, QPyNullVariant):
+            self.text.append(PlainText(
+                tr('Null (PyQt4.QtCore.QPyNullVariant) found from the data.')))
         else:
             raise InvalidMessageItemError(text, text.__class__)
 

@@ -6,9 +6,11 @@
    then call get_post_processors(requested_postprocessors)
 
 """
+from safe_extras.parameters.boolean_parameter import BooleanParameter
+from safe_extras.parameters.group_parameter import GroupParameter
 
 __author__ = 'Marco Bernasocchi <marco@opengis.ch>'
-__revision__ = '03d01890920b07c702f377c171c42a50bcb8f74f'
+__revision__ = 'f16353426abc9c5fd8f65e2eb0e87e11c4159468'
 __date__ = '10/10/2012'
 __license__ = "GPL"
 __copyright__ = 'Copyright 2012, Australia Indonesia Facility for '
@@ -74,7 +76,7 @@ def get_postprocessors(requested_postprocessors):
     for name, values in requested_postprocessors.iteritems():
         constructor_class_name = name + 'Postprocessor'
         try:
-            if values[0].value:
+            if check_postprocessor_enabled(values):
                 if name in AVAILABLE_POSTPTOCESSORS.keys():
                     # http://stackoverflow.com/a/554462
                     constructor = globals()[constructor_class_name]
@@ -92,6 +94,26 @@ def get_postprocessors(requested_postprocessors):
                 constructor_class_name + ' has no "on" key, skipping it')
 
     return postprocessor_instances
+
+
+def check_postprocessor_enabled(parameters):
+    """Returns true if postprocessor is enabled by users
+
+    :param parameters: postprocessor parameters
+    :return:
+    """
+    # it may contain a list
+    if isinstance(parameters, list):
+        postprocessor = parameters[0]
+    else:
+        postprocessor = parameters
+
+    if isinstance(postprocessor, BooleanParameter):
+        return postprocessor.value
+    elif isinstance(postprocessor, GroupParameter):
+        return postprocessor.enable_parameter
+    else:
+        return False
 
 
 def get_postprocessor_human_name(postprocessor):

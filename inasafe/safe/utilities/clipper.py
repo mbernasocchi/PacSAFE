@@ -13,7 +13,7 @@ Contact : ole.moller.nielsen@gmail.com
 from safe.utilities.i18n import tr
 
 __author__ = 'tim@kartoza.com'
-__revision__ = '03d01890920b07c702f377c171c42a50bcb8f74f'
+__revision__ = 'f16353426abc9c5fd8f65e2eb0e87e11c4159468'
 __date__ = '20/01/2011'
 __copyright__ = 'Copyright 2012, Australia Indonesia Facility for '
 __copyright__ += 'Disaster Reduction'
@@ -246,7 +246,7 @@ def _clip_vector_layer(
 
     writer = QgsVectorFileWriter(
         file_name,
-        'UTF-8',
+        None,
         field_list,
         layer.wkbType(),
         geo_crs,

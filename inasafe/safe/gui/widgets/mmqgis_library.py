@@ -1,4 +1,4 @@
-﻿# --------------------------------------------------------
+# --------------------------------------------------------
 #    mmqgis_library - mmqgis operation functions
 #
 #    begin                : 10 May 2010
@@ -4118,8 +4118,8 @@ def mmqgis_merge(qgis, layernames, savename, addlayer):
 			if not found:
 				fields.append(sfield)
 
-	for sindex, sfield in enumerate(fields):
-		print unicode(sindex) + ": " + sfield.name()
+	# for sindex, sfield in enumerate(fields):
+	#	print unicode(sindex) + ": " + sfield.name()
 			
 	if (len(layers) <= 0):
 		return "No layers given to merge"
@@ -4622,6 +4622,13 @@ def mmqgis_spatial_join(qgis, targetname, spatialop, joinname, fields, fieldop, 
 
 	if len(fields) != len(set(fields)):
 		return "Duplicate output field names from different layers"
+
+	# Rasters don't have fields()
+	if (not hasattr(target_layer.dataProvider(), "fields")):
+		return "Target layer has no fields (raster layer?)";
+
+	if (not hasattr(join_layer.dataProvider(), "fields")):
+		return "Join layer has no fields (raster layer?)";
 
 	transform = None
 	if target_layer.crs() != join_layer.crs():

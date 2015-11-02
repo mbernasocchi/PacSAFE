@@ -10,7 +10,7 @@ Contact : ole.moller.nielsen@gmail.com
 """
 
 __author__ = 'marco@opengis.ch'
-__revision__ = '03d01890920b07c702f377c171c42a50bcb8f74f'
+__revision__ = 'f16353426abc9c5fd8f65e2eb0e87e11c4159468'
 __date__ = '24/05/2013'
 __copyright__ = ('Copyright 2012, Australia Indonesia Facility for '
                  'Disaster Reduction')
@@ -30,15 +30,6 @@ class BulletedList(AbstractList):
         Strings can be passed and are automatically converted in to
         item.Text()
 
-        Args:
-            Text message, an element to add to the message
-
-        Returns:
-            None
-
-        Raises:
-            Errors are propagated
-
         We pass the kwargs on to the base class so an exception is raised
         if invalid keywords were passed. See:
 
@@ -48,16 +39,10 @@ class BulletedList(AbstractList):
         super(BulletedList, self).__init__(*args, **kwargs)
 
     def to_html(self):
-        """Render a Text MessageElement as html
+        """Render a Text MessageElement as html.
 
-        Args:
-            None
-
-        Returns:
-            Str the html representation of the Text MessageElement
-
-        Raises:
-            Errors are propagated
+        :returns: The html representation of the Text MessageElement
+        :rtype: basestring
         """
 
         if self.items is None:
@@ -70,16 +55,10 @@ class BulletedList(AbstractList):
             return html
 
     def to_text(self):
-        """Render a Text MessageElement as plain text
+        """Render a Text MessageElement as plain text.
 
-        Args:
-            None
-
-        Returns:
-            Str the plain text representation of the Text MessageElement
-
-        Raises:
-            Errors are propagated
+        :returns: The plain text representation of the Text MessageElement.
+        :rtype: basestring
         """
         if self.items is None:
             return

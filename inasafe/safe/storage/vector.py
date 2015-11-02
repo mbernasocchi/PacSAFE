@@ -12,7 +12,7 @@ OGR C++ reference: http://www.gdal.org/ogr
 """
 
 __author__ = 'Ole Nielsen <ole.moller.nielsen@gmail.com>'
-__revision__ = '03d01890920b07c702f377c171c42a50bcb8f74f'
+__revision__ = 'f16353426abc9c5fd8f65e2eb0e87e11c4159468'
 __date__ = '01/11/2010'
 __license__ = "GPL"
 __copyright__ = 'Copyright 2012, Australia Indonesia Facility for '
@@ -597,7 +597,7 @@ class Vector(Layer):
         # FIXME (DK): this branch isn't covered by test
         if not QGIS_IS_AVAILABLE:
             msg = ('Tried to convert layer to QgsVectorLayer instance, '
-                   'but QGIS is not avialable.')
+                   'but QGIS is not available.')
             raise TypeError(msg)
 
         # FIXME (DK): ? move code from safe_to_qgis_layer to this method
@@ -675,10 +675,10 @@ class Vector(Layer):
         if ds is None:
             msg = 'Creation of output file %s failed' % filename
             raise WriteLayerError(msg)
-
-        lyr = ds.CreateLayer(get_string(layer_name),
-                             self.projection.spatial_reference,
-                             self.geometry_type)
+        lyr = ds.CreateLayer(
+            get_string(layer_name),
+            self.projection.spatial_reference,
+            self.geometry_type)
         if lyr is None:
             msg = 'Could not create layer %s' % layer_name
             raise WriteLayerError(msg)
@@ -716,7 +716,9 @@ class Vector(Layer):
             # Create attribute fields in layer
             store_attributes = True
             for name in fields:
-                fd = ogr.FieldDefn(name, ogr_types[name])
+                # Rizky : OGR can't handle unicode field name, thus we
+                # convert it to ASCII
+                fd = ogr.FieldDefn(str(name), ogr_types[name])
                 # FIXME (Ole): Trying to address issue #16
                 #              But it doesn't work and
                 #              somehow changes the values of MMI in test

@@ -11,7 +11,7 @@ Contact : ole.moller.nielsen@gmail.com
 """
 
 __author__ = 'marco@opengis.ch'
-__revision__ = '03d01890920b07c702f377c171c42a50bcb8f74f'
+__revision__ = 'f16353426abc9c5fd8f65e2eb0e87e11c4159468'
 __date__ = '27/05/2013'
 __copyright__ = ('Copyright 2012, Australia Indonesia Facility for '
                  'Disaster Reduction')
@@ -38,14 +38,8 @@ class Message(MessageElement):
         Strings can be passed and are automatically converted in to
         item.Text()
 
-        Args:
-            MessageElement message, an element to add to the message queue
+        :arg args: One or more elements to add to the message queue
 
-        Returns:
-            None
-
-        Raises:
-            Errors are propagated
 
         We pass the kwargs on to the base class so an exception is raised
         if invalid keywords were passed. See:
@@ -80,15 +74,6 @@ class Message(MessageElement):
 
     def clear(self):
         """clear MessageElement queue
-
-        Args:
-            None
-
-        Returns:
-            None
-
-        Raises:
-            Errors are propagated
         """
         self.message = []
 

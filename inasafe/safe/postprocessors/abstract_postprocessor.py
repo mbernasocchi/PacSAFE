@@ -4,7 +4,7 @@
 """
 
 __author__ = 'Marco Bernasocchi <marco@opengis.ch>'
-__revision__ = '03d01890920b07c702f377c171c42a50bcb8f74f'
+__revision__ = 'f16353426abc9c5fd8f65e2eb0e87e11c4159468'
 __date__ = '10/10/2012'
 __license__ = "GPL"
 __copyright__ = 'Copyright 2012, Australia Indonesia Facility for '
@@ -52,15 +52,6 @@ class AbstractPostprocessor(object):
     def description(self):
         """
         Describe briefly what the post processor does.
-
-        Args:
-            None
-
-        Returns:
-            Str the translated description
-
-        Raises:
-            Errors are propagated
         """
         raise NotImplementedError('Please don\'t use this class directly')
 
@@ -72,10 +63,7 @@ class AbstractPostprocessor(object):
 
         Args:
             params: dict of parameters to pass to the post processor
-        Returns:
-            None
-        Raises:
-            None
+
         """
         del params
         if self._results is not None:
@@ -87,13 +75,6 @@ class AbstractPostprocessor(object):
         Abstract method to be called from the concrete implementation
         with AbstractPostprocessor.process(self) it takes care of results
         being initialized
-
-        Args:
-            None
-        Returns:
-            None
-        Raises:
-            None
         """
         if self._results is None:
             self._raise_error('setup needs to be called before process')

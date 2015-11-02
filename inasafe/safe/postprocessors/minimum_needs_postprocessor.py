@@ -2,10 +2,8 @@
 """**Postprocessors package.**
 
 """
-from safe.utilities.i18n import tr
-
 __author__ = 'Marco Bernasocchi <marco@opengis.ch>'
-__revision__ = '03d01890920b07c702f377c171c42a50bcb8f74f'
+__revision__ = 'f16353426abc9c5fd8f65e2eb0e87e11c4159468'
 __date__ = '22/08/2013'
 __license__ = "GPL"
 __copyright__ = 'Copyright 2012, Australia Indonesia Facility for '
@@ -13,6 +11,8 @@ __copyright__ += 'Disaster Reduction'
 
 
 from safe.postprocessors.abstract_postprocessor import AbstractPostprocessor
+from safe.gui.tools.minimum_needs.needs_profile import filter_needs_parameters
+from safe.utilities.i18n import tr
 
 
 class MinimumNeedsPostprocessor(AbstractPostprocessor):
@@ -55,14 +55,15 @@ class MinimumNeedsPostprocessor(AbstractPostprocessor):
                 function_params = params['function_params']
                 if 'evacuation_percentage' in function_params.keys():
                     evacuation_percentage = function_params[
-                        'evacuation_percentage']
+                        'evacuation_percentage'].value
                     evacuation_percentage /= 100.0  # make it decimal
 
             self.impact_total = int(round(params['impact_total'] *
                                           evacuation_percentage))
         except (ValueError, TypeError):
             self.impact_total = self.NO_DATA_TEXT
-        self.minimum_needs = params['function_params']['minimum needs']
+        self.minimum_needs = filter_needs_parameters(
+            params['function_params']['minimum needs'])
 
     def process(self):
         """concrete implementation it takes care of the needed parameters being

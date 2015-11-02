@@ -4,7 +4,7 @@
 """
 
 __author__ = 'Marco Bernasocchi <marco@opengis.ch>'
-__revision__ = '03d01890920b07c702f377c171c42a50bcb8f74f'
+__revision__ = 'f16353426abc9c5fd8f65e2eb0e87e11c4159468'
 __date__ = '10/10/2012'
 __license__ = "GPL"
 __copyright__ = 'Copyright 2012, Australia Indonesia Facility for '
@@ -39,26 +39,22 @@ class BuildingTypePostprocessor(AbstractPostprocessor):
         self.valid_type_fields = None
         self.fields_values = OrderedDict([
             ('Medical', ['Clinic/Doctor', 'Hospital']),
-            ('Schools', ['School', 'University/College', 'Public - education']),
+            ('Schools', ['School', 'University/College', ]),
             ('Places of worship', ['Place of Worship - Unitarian',
                                    'Place of Worship - Islam',
                                    'Place of Worship - Buddhist',
-                                   'Public - religion',
                                    'Place of Worship']),
-            ('Residential', ['Residential' , 'Residential - out building', 'Residential - permanent dwelling multi family', 'Residential - permanent dwelling single family']),
+            ('Residential', ['Residential']),
             ('Government', ['Government']),
-            ('Public Building', ['Public Building', 'Public - general public facility']),
+            ('Public Building', ['Public Building']),
             ('Fire Station', ['Fire Station']),
             ('Police Station', ['Police Station']),
             ('Supermarket', ['Supermarket']),
-            ('Commercial', ['Commercial', 'Commercial - general commercial', 'Commercial - accommodation']),
-            ('Industrial', ['Industrial', 'Industrial - general industrial']),
+            ('Commercial', ['Commercial']),
+            ('Industrial', ['Industrial']),
             ('Utility', ['Utility']),
             ('Sports Facility', ['Sports Facility']),
             ('Other', [])])
-
-       
-
 
         self.known_types = []
         self._update_known_types()
@@ -150,7 +146,10 @@ class BuildingTypePostprocessor(AbstractPostprocessor):
                         if field_value != 'Not Affected':
                             result += 1
                     else:
-                        result += field_value
+                        if field_value:
+                            # See issue #2258. Since we are only working with
+                            # one building at a time we should only add 1.
+                            result += 1
                 result = int(round(result))
             except (ValueError, KeyError):
                 result = self.NO_DATA_TEXT
@@ -186,7 +185,11 @@ class BuildingTypePostprocessor(AbstractPostprocessor):
                                 if field_value != 'Not Affected':
                                     result += 1
                             else:
-                                result += field_value
+                                if field_value:
+                                    # See issue #2258. Since we are only
+                                    # working with one building at a time we
+                                    # should only add 1.
+                                    result += 1
                             break
                         elif self._is_unknown_type(building_type):
                             self._update_known_types(building_type)

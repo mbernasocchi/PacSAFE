@@ -13,7 +13,7 @@ Contact : ole.moller.nielsen@gmail.com
 
 """
 __author__ = 'tim@kartoza.com'
-__revision__ = '03d01890920b07c702f377c171c42a50bcb8f74f'
+__revision__ = 'f16353426abc9c5fd8f65e2eb0e87e11c4159468'
 __date__ = '26/02/2014'
 __copyright__ = ('Copyright 2012, Australia Indonesia Facility for '
                  'Disaster Reduction')
@@ -43,7 +43,7 @@ class AboutDialog(QtGui.QDialog, FORM_CLASS):
 
         QtGui.QDialog.__init__(self, parent)
         self.setupUi(self)
-        self.setWindowTitle(self.tr('About PacSafe %s' % get_version()))
+        self.setWindowTitle(self.tr('About InaSAFE %s' % get_version()))
         self.parent = parent
 
         # Set Limitations Text
@@ -74,7 +74,10 @@ class AboutDialog(QtGui.QDialog, FORM_CLASS):
         attributes_list.append(self.tr(
             'Edit by Hugo Garduño from The Noun Project'))
         attributes_list.append(self.tr(
-            'Add designed by Michael Zenaty from the Noun Project'))
+            '"Add icon" designed by Michael Zenaty from the Noun Project'))
         attributes_list.append(self.tr(
-            'Remove designed by Dalpat Prajapati from the Noun Project'))
+            '"Remove icon" designed by Dalpat Prajapati from the Noun '
+            'Project'))
+        attributes_list.append(self.tr(
+            'Humanitarian icons source: OCHA'))
         return attributes_list

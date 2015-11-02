@@ -12,7 +12,7 @@ Contact : ole.moller.nielsen@gmail.com
 """
 
 __author__ = 'tim@kartoza.com'
-__revision__ = '03d01890920b07c702f377c171c42a50bcb8f74f'
+__revision__ = 'f16353426abc9c5fd8f65e2eb0e87e11c4159468'
 __date__ = '26/10/2013'
 __copyright__ = ('Copyright 2012, Australia Indonesia Facility for '
                  'Disaster Reduction')
@@ -132,7 +132,7 @@ class ImpactReportDialog(QtGui.QDialog, FORM_CLASS):
 
         try:
             default_template_path = resources_path(
-                'qgis-composer-templates', 'inasafe-portrait-a4.qpt')
+                'qgis-composer-templates', 'a4-portrait-blue.qpt')
             path = settings.value(
                 'inasafe/lastTemplate',
                 default_template_path,

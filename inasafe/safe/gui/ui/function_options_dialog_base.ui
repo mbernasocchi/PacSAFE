@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>856</width>
-    <height>595</height>
+    <height>682</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,24 +50,119 @@
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0">
-        <layout class="QFormLayout" name="configLayout"/>
+        <layout class="QVBoxLayout" name="configLayout">
+         <property name="sizeConstraint">
+          <enum>QLayout::SetMaximumSize</enum>
+         </property>
+        </layout>
        </item>
        <item row="1" column="0">
         <widget class="QGroupBox" name="groupBox">
-         <property name="autoFillBackground">
-          <bool>false</bool>
+         <property name="minimumSize">
+          <size>
+           <width>816</width>
+           <height>268</height>
+          </size>
          </property>
          <property name="title">
           <string>*</string>
          </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
+         <widget class="QLabel" name="label_3">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>110</y>
+            <width>141</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Medium (metres) &gt;</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_5">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>170</y>
+            <width>141</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Extreme (metres) &gt;</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>80</y>
+            <width>141</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>Low (metres) &gt;</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="textExt">
+          <property name="geometry">
+           <rect>
+            <x>90</x>
+            <y>170</y>
+            <width>51</width>
+            <height>27</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>2.0</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_4">
+          <property name="geometry">
+           <rect>
+            <x>150</x>
+            <y>140</y>
+            <width>141</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>High (metres) &gt;</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="textHigh">
+          <property name="geometry">
+           <rect>
+            <x>90</x>
+            <y>140</y>
+            <width>51</width>
+            <height>27</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>1.5</string>
+          </property>
+         </widget>
+         <widget class="QLineEdit" name="textLow">
+          <property name="geometry">
+           <rect>
+            <x>90</x>
+            <y>80</y>
+            <width>51</width>
+            <height>27</height>
+           </rect>
+          </property>
+          <property name="text">
+           <string>0.2</string>
+          </property>
+         </widget>
          <widget class="QCheckBox" name="checkMulti">
           <property name="geometry">
            <rect>
-            <x>20</x>
-            <y>30</y>
+            <x>30</x>
+            <y>40</y>
             <width>421</width>
             <height>20</height>
            </rect>
@@ -79,76 +174,11 @@
            <bool>false</bool>
           </property>
          </widget>
-         <widget class="QLabel" name="label">
-          <property name="geometry">
-           <rect>
-            <x>140</x>
-            <y>70</y>
-            <width>141</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Low (metres) &gt;</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_3">
-          <property name="geometry">
-           <rect>
-            <x>140</x>
-            <y>100</y>
-            <width>141</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Medium (metres) &gt;</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_4">
-          <property name="geometry">
-           <rect>
-            <x>140</x>
-            <y>130</y>
-            <width>141</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>High (metres) &gt;</string>
-          </property>
-         </widget>
-         <widget class="QLabel" name="label_5">
-          <property name="geometry">
-           <rect>
-            <x>140</x>
-            <y>160</y>
-            <width>141</width>
-            <height>21</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>Extreme (metres) &gt;</string>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="textLow">
-          <property name="geometry">
-           <rect>
-            <x>80</x>
-            <y>70</y>
-            <width>51</width>
-            <height>27</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>0.2</string>
-          </property>
-         </widget>
          <widget class="QLineEdit" name="textMed">
           <property name="geometry">
            <rect>
-            <x>80</x>
-            <y>100</y>
+            <x>90</x>
+            <y>110</y>
             <width>51</width>
             <height>27</height>
            </rect>
@@ -157,39 +187,13 @@
            <string>1.0</string>
           </property>
          </widget>
-         <widget class="QLineEdit" name="textHigh">
-          <property name="geometry">
-           <rect>
-            <x>80</x>
-            <y>130</y>
-            <width>51</width>
-            <height>27</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>1.5</string>
-          </property>
-         </widget>
-         <widget class="QLineEdit" name="textExt">
-          <property name="geometry">
-           <rect>
-            <x>80</x>
-            <y>160</y>
-            <width>51</width>
-            <height>27</height>
-           </rect>
-          </property>
-          <property name="text">
-           <string>2.0</string>
-          </property>
-         </widget>
         </widget>
        </item>
       </layout>
      </widget>
     </widget>
    </item>
-   <item row="2" column="0" rowspan="2" colspan="2">
+   <item row="2" column="0" colspan="2">
     <widget class="QLabel" name="lblErrorMessage">
      <property name="font">
       <font>
@@ -231,8 +235,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
+     <x>263</x>
+     <y>585</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -247,8 +251,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>331</x>
+     <y>585</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>

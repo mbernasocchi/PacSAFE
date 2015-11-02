@@ -16,7 +16,7 @@ Contact : ole.moller.nielsen@gmail.com
 """
 
 __author__ = 'ismail@kartoza.com'
-__revision__ = '03d01890920b07c702f377c171c42a50bcb8f74f'
+__revision__ = 'f16353426abc9c5fd8f65e2eb0e87e11c4159468'
 __date__ = '11/17/14'
 __copyright__ = ('Copyright 2012, Australia Indonesia Facility for '
                  'Disaster Reduction')
@@ -88,23 +88,24 @@ class Extent(object):
         :returns: Rubber band that should be set to the extent.
         :rtype: QgsRubberBand
         """
-        rubberband = QgsRubberBand(
+        # noinspection PyArgumentList
+        rubber_band = QgsRubberBand(
             self.iface.mapCanvas(), geometryType=QGis.Line)
-        rubberband.setColor(colour)
-        rubberband.setWidth(width)
+        rubber_band.setColor(colour)
+        rubber_band.setWidth(width)
         update_display_flag = False
         point = QgsPoint(extent.xMinimum(), extent.yMinimum())
-        rubberband.addPoint(point, update_display_flag)
+        rubber_band.addPoint(point, update_display_flag)
         point = QgsPoint(extent.xMaximum(), extent.yMinimum())
-        rubberband.addPoint(point, update_display_flag)
+        rubber_band.addPoint(point, update_display_flag)
         point = QgsPoint(extent.xMaximum(), extent.yMaximum())
-        rubberband.addPoint(point, update_display_flag)
+        rubber_band.addPoint(point, update_display_flag)
         point = QgsPoint(extent.xMinimum(), extent.yMaximum())
-        rubberband.addPoint(point, update_display_flag)
+        rubber_band.addPoint(point, update_display_flag)
         point = QgsPoint(extent.xMinimum(), extent.yMinimum())
         update_display_flag = True
-        rubberband.addPoint(point, update_display_flag)
-        return rubberband
+        rubber_band.addPoint(point, update_display_flag)
+        return rubber_band
 
     @staticmethod
     def validate_rectangle(extent):

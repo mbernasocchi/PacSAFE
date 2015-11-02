@@ -13,7 +13,7 @@ Contact : ole.moller.nielsen@gmail.com
 """
 
 __author__ = 'bungcip@gmail.com & tim@kartoza.com & ismail@kartoza.com'
-__revision__ = '03d01890920b07c702f377c171c42a50bcb8f74f'
+__revision__ = 'f16353426abc9c5fd8f65e2eb0e87e11c4159468'
 __date__ = '01/10/2012'
 __copyright__ = ('Copyright 2012, Australia Indonesia Facility for '
                  'Disaster Reduction')
@@ -496,7 +496,7 @@ class BatchDialog(QDialog, FORM_CLASS):
                 # Usually after analysis is done, the impact layer
                 # become the active layer. <--- WRONG
                 # noinspection PyUnresolvedReferences
-                impact_layer = self.dock.analysis.get_impact_layer()
+                impact_layer = self.dock.analysis.impact_layer
 
                 # Load impact layer into QGIS
                 qgis_layer = read_impact_layer(impact_layer)
@@ -583,7 +583,7 @@ class BatchDialog(QDialog, FORM_CLASS):
         """
         # FIXME: check if impact_layer is the real impact layer...
         template = resources_path(
-            'qgis-composer-templates', 'inasafe-portrait-a4.qpt')
+            'qgis-composer-templates', 'a4-portrait-blue.qpt')
         impact_report = ImpactReport(self.iface, template, impact_layer)
 
         LOGGER.debug('Create Report: %s' % title)

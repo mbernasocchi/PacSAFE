@@ -15,7 +15,7 @@ Contact : ole.moller.nielsen@gmail.com
 """
 
 __author__ = 'marco@opengis.ch'
-__revision__ = '03d01890920b07c702f377c171c42a50bcb8f74f'
+__revision__ = 'f16353426abc9c5fd8f65e2eb0e87e11c4159468'
 __date__ = '12/10/2014'
 __copyright__ = ('Copyright 2012, Australia Indonesia Facility for '
                  'Disaster Reduction')
@@ -28,7 +28,7 @@ import time
 
 from xml.etree import ElementTree
 
-from safe.common.exceptions import ReadMetadataError
+from safe.common.exceptions import MetadataReadError
 from safe.defaults import get_defaults
 from safe.storage.iso_19115_template import ISO_METADATA_XML_TEMPLATE
 
@@ -93,7 +93,7 @@ def write_keyword_in_iso_metadata(keyword_filename):
     keyword_element = root.find(ISO_METADATA_KEYWORD_TAG)
     # by now we should have a valid container
     if keyword_element is None:
-        raise ReadMetadataError
+        raise MetadataReadError
     keyword_element.append(CDATA(keyword_str))
     # next line fixes issue #1380 - do not remove before testing! TS
     keyword_element.text = CDATA(keyword_str)
@@ -210,7 +210,7 @@ def read_iso_metadata(keyword_filename):
     keyword_element = root.find(ISO_METADATA_KEYWORD_TAG)
     # we have an xml file but it has no valid container
     if keyword_element is None:
-        raise ReadMetadataError
+        raise MetadataReadError
 
     metadata = {'keywords': keyword_element.text.split('\n')}
 
