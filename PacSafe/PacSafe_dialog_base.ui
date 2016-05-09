@@ -47,7 +47,7 @@
       <x>20</x>
       <y>30</y>
       <width>411</width>
-      <height>131</height>
+      <height>121</height>
      </rect>
     </property>
     <item>
@@ -78,6 +78,11 @@
     <item>
      <property name="text">
       <string>Apia Population Flood</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Christmas Island Shoreline Change Detection</string>
      </property>
     </item>
    </widget>
